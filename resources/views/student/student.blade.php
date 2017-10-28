@@ -4,6 +4,11 @@
 
   <div class="container">
     <div class="row">
+      @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+          <p>{{ $message }}</p>
+        </div>
+      @endif
       <div class="col-md-6">
         <h2>Student list</h2>
         <p>Dummy students</p>

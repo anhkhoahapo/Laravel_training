@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -36,7 +37,17 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        request()->validate([
+                'name' => 'required',
+                'DOB' => 'required',
+                'address' => 'required',
+                'class' => 'required',
+        ]);
+
+        Student::create($request->all());
+
+        return redirect()->route('student.index')
+                ->with('success','Student info created successfully');
     }
 
     /**
