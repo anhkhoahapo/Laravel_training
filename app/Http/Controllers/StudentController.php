@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Model\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -16,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('student.student', ['students' => $students]);
+        return view('student.index', ['students' => $students]);
     }
 
     /**
@@ -26,7 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create_student');
+        return view('student.create');
     }
 
     /**
@@ -58,7 +57,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+
+        return view('student.show', ['student' => $student]);
     }
 
     /**

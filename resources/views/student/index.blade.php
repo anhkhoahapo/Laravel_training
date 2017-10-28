@@ -37,7 +37,10 @@
         <td>{{$student->DOB}}</td>
         <td>{{$student->address}}</td>
         <td>{{$student->class}}</td>
-        <td></td>
+        <td>
+          <a class="btn btn-success" href={{url('student',[$student->id])}}>Show</a>
+          <a class="btn btn-primary" href={{url('student/'. $student->id . '/edit')}}>Edit</a>
+        </td>
       </tr>
       @endforeach
 
