@@ -110,4 +110,12 @@ class StudentController extends Controller
         return redirect()->route('student.index')
                 ->with('success','Student info deleted successfully');
     }
+
+    public function search(){
+        $name = request()->n;
+
+        $students = Student::where('name', 'like', '%'.$name.'%')->get();
+
+        return view('student.index',['students' => $students]);
+    }
 }

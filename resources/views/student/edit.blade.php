@@ -8,7 +8,7 @@
 @section('content')
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h2>Create new student info</h2>
+      <h2>Update student info</h2>
       @if ($errors->any())
         <div class="alert alert-danger">
           <ul>
@@ -19,7 +19,14 @@
         </div>
       @endif
 
-      {!! Form::model($student, ['method' => 'PUT','action'=> ['StudentController@update', $student->id], 'class'=> 'form-horizontal']) !!}
+      {!! Form::model(
+        $student,
+        [
+          'method' => 'PUT',
+          'action'=> ['StudentController@update', $student->id],
+          'class'=> 'form-horizontal'
+        ]
+      ) !!}
 
       <div class="form-group">
         <label for="name-txt" class="col-sm-2 control-label">Name</label>

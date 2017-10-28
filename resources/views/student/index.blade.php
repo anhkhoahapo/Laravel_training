@@ -1,5 +1,14 @@
 @extends('student.layouts.main')
 
+@section('styles')
+  <style>
+    .form-inline {
+      margin-top: 25px;
+      text-align: end;
+    }
+  </style>
+@endsection
+
 @section('content')
 
   <div class="container">
@@ -14,7 +23,13 @@
         <p>Dummy students</p>
       </div>
       <div class="col-md-6">
-        <a class="btn btn-primary" href={{url('student/create')}}>+</a>
+        <form method="get" action={{url('student/search')}} class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Student name" name="n">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+
       </div>
     </div>
     <table class="table table-striped">
@@ -40,9 +55,16 @@
         <td>
           <a class="btn btn-success" href={{url('student',[$student->id])}}>Show</a>
           <a class="btn btn-primary" href={{url('student/'. $student->id . '/edit')}}>Edit</a>
-          {!! Form::open(['method' => 'DELETE','action'=> ['StudentController@destroy', $student->id],'class'=>'form-inline', 'style'=>'display:inline']) !!}
+          {!! Form::open(
+            [
+              'method' => 'DELETE',
+              'action'=> ['StudentController@destroy', $student->id],
+              'class'=>'form-inline',
+              'style'=>'display:inline'
+            ]
+          ) !!}
 
-          <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+            <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
 
           {!! Form::close() !!}
         </td>
