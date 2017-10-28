@@ -40,6 +40,11 @@
         <td>
           <a class="btn btn-success" href={{url('student',[$student->id])}}>Show</a>
           <a class="btn btn-primary" href={{url('student/'. $student->id . '/edit')}}>Edit</a>
+          {!! Form::open(['method' => 'DELETE','action'=> ['StudentController@destroy', $student->id],'class'=>'form-inline', 'style'=>'display:inline']) !!}
+
+          <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+
+          {!! Form::close() !!}
         </td>
       </tr>
       @endforeach
