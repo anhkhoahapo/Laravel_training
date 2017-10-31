@@ -1,20 +1,34 @@
 @extends('student.layouts.main')
 
+@section('styles')
+  <style>
+    .actions-head {
+      text-align: end;
+    }
+    .new-btn {
+      margin-top: 30px;
+    }
+    .pagination {
+      text-align: center;
+    }
+  </style>
+@endsection
+
 @section('content')
 
   <div class="container">
     <div class="row">
-      @if ($message = Session::get('success'))
+      @if (Session::has('success'))
         <div class="alert alert-success">
-          <p>{{ $message }}</p>
+          <p>{{ Session::get('success') }}</p>
         </div>
       @endif
       <div class="col-md-6">
         <h2>Student list</h2>
         <p>Dummy students</p>
       </div>
-      <div class="col-md-6">
-        <a class="btn btn-primary" href={{url('student/create')}}>+</a>
+      <div class="actions-head col-md-6">
+        <a class="new-btn btn btn-primary" href="{{ route('student.create') }}">+ New</a>
       </div>
     </div>
     <table class="table table-striped">
@@ -31,21 +45,24 @@
       <tbody>
 
       @foreach($students as $student)
-      <tr>
-        <td>{{$student->id}}</td>
-        <td>{{$student->name}}</td>
-        <td>{{$student->DOB}}</td>
-        <td>{{$student->address}}</td>
-        <td>{{$student->class}}</td>
-        <td>
-          <a class="btn btn-success" href={{url('student',[$student->id])}}>Show</a>
-          <a class="btn btn-primary" href={{url('student/'. $student->id . '/edit')}}>Edit</a>
-        </td>
-      </tr>
+        <tr>
+          <td>{{ $student->id }}</td>
+          <td>{{ $student->name }}</td>
+          <td>{{ $student->birthday }}</td>
+          <td>{{ $student->address }}</td>
+          <td>{{ $student->class }}</td>
+          <td>
+            <a class="btn btn-success" href="{{ route('student.show', ['id' => $student->id]) }}">Show</a>
+            <a class="btn btn-primary" href="{{ route('student.edit', ['id' => $student->id]) }}">Edit</a>
+          </td>
+        </tr>
       @endforeach
 
       </tbody>
     </table>
+    <div class="pagination col-md-12">
+      {{ $students->links() }}
+    </div>
   </div>
 
 @endsection
