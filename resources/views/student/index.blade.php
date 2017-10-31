@@ -20,9 +20,9 @@
 
   <div class="container">
     <div class="row">
-      @if ($message = Session::get('success'))
+      @if (Session::has('success'))
         <div class="alert alert-success">
-          <p>{{ $message }}</p>
+          <p>{{ Session::get('success') }}</p>
         </div>
       @endif
       <div class="col-md-6">
