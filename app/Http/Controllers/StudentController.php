@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ValidStudent;
+use App\Http\Requests\StoreStudent;
 use App\Model\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -33,10 +32,10 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\ValidStudent  $request
+     * @param  \App\Http\Requests\StoreStudent  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidStudent $request)
+    public function store(StoreStudent $request)
     {
         Student::create($request->all());
 
