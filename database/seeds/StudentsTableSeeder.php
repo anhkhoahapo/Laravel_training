@@ -16,7 +16,7 @@ class StudentsTableSeeder extends Seeder
         for($i = 0 ; $i < 50; $i++) {
             DB::table('students')->insert([
                     'name'          => $faker->name(),
-                    'DOB'           => $faker->date('Y-m-d', 'now'),
+                    'birthday'           => $faker->date('Y-m-d', 'now'),
                     'address'       => $faker->address(),
                     'class'         => $class[rand(0, count($class) - 1)],
                     'created_at'    => date('Y-m-d H:i:s'),
