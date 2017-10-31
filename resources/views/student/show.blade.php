@@ -4,11 +4,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 bg-info">
-        <h1>{{$student->name}}'s info</h1>
-        <p>Date of birth: {{$student->DOB}}</p>
-        <p>Address: {{$student->address}}</p>
-        <p>Class: {{$student->class}}</p>
-        <a class="btn btn-primary" href={{url('student/'. $student->id . '/edit')}}>Edit</a>
+        <h1>{{ $student->name }}'s info</h1>
+        <p>Date of birth: {{ $student->birthday }}</p>
+        <p>Address: {{ $student->address }}</p>
+        <p>Class: {{ $student->class }}</p>
+        <a class="btn btn-primary" href="{{ route('student.edit', ['id' => $student->id]) }}">Edit</a>
       </div>
     </div>
   </div>

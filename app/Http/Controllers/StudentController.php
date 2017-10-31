@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStudent;
 use App\Model\Student;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::paginate(10);
         return view('student.index', ['students' => $students]);
     }
 
@@ -31,18 +32,11 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreStudent  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStudent $request)
     {
-        request()->validate([
-                'name' => 'required',
-                'DOB' => 'required',
-                'address' => 'required',
-                'class' => 'required',
-        ]);
-
         Student::create($request->all());
 
         return redirect()->route('student.index')
@@ -78,19 +72,12 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param StoreStudent|Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreStudent $request, $id)
     {
-        request()->validate([
-                'name' => 'required',
-                'DOB' => 'required',
-                'address' => 'required',
-                'class' => 'required',
-        ]);
-
         Student::find($id)->update($request->all());
 
         return redirect()->route('student.index')
