@@ -1,5 +1,17 @@
 @extends('student.layouts.main')
 
+@section('styles')
+  <style>
+    .actions-head {
+      text-align: end;
+    }
+
+    .new-btn {
+      margin-top: 30px;
+    }
+  </style>
+@endsection
+
 @section('content')
 
   <div class="container">
@@ -13,8 +25,8 @@
         <h2>Student list</h2>
         <p>Dummy students</p>
       </div>
-      <div class="col-md-6">
-        <a class="btn btn-primary" href={{url('student/create')}}>+</a>
+      <div class="actions-head col-md-6">
+        <a class="new-btn btn btn-primary" href={{route('student.create')}}>+ New</a>
       </div>
     </div>
     <table class="table table-striped">
@@ -34,7 +46,7 @@
       <tr>
         <td>{{$student->id}}</td>
         <td>{{$student->name}}</td>
-        <td>{{$student->DOB}}</td>
+        <td>{{$student->birthday}}</td>
         <td>{{$student->address}}</td>
         <td>{{$student->class}}</td>
         <td></td>

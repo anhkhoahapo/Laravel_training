@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidStudent;
 use App\Model\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('student.student', ['students' => $students]);
+        return view('student.index', ['students' => $students]);
     }
 
     /**
@@ -26,24 +27,17 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create_student');
+        return view('student.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\ValidStudent  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidStudent $request)
     {
-        request()->validate([
-                'name' => 'required',
-                'DOB' => 'required',
-                'address' => 'required',
-                'class' => 'required',
-        ]);
-
         Student::create($request->all());
 
         return redirect()->route('student.index')
