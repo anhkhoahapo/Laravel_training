@@ -30,7 +30,7 @@
         <p>Dummy students</p>
       </div>
       <div class="actions-head col-md-6">
-        <a class="new-btn btn btn-primary" href={{route('student.create')}}>+ New</a>
+        <a class="new-btn btn btn-primary" href="{{ route('student.create') }}">+ New</a>
       </div>
     </div>
     <table class="table table-striped">
@@ -48,11 +48,11 @@
 
       @foreach($students as $student)
       <tr>
-        <td>{{$student->id}}</td>
-        <td>{{$student->name}}</td>
-        <td>{{$student->birthday}}</td>
-        <td>{{$student->address}}</td>
-        <td>{{$student->class}}</td>
+        <td>{{ $student->id }}</td>
+        <td>{{ $student->name }}</td>
+        <td>{{ $student->birthday }}</td>
+        <td>{{ $student->address }}</td>
+        <td>{{ $student->class }}</td>
         <td></td>
       </tr>
       @endforeach

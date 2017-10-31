@@ -8,7 +8,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>Student Management</title>
-  <link href={{asset('css/app.css')}} rel="stylesheet">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
   @yield('styles')
 </head>
@@ -30,10 +30,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="nav navbar-nav">
           <li>
-            <a href={{url('student')}}>Home<span class="sr-only">(current)</span></a>
+            <a href="{{ route('student.index') }}">Home<span class="sr-only">(current)</span></a>
           </li>
           <li>
-            <a href={{url('student/create')}}>New student</a>
+            <a href="{{ route('student.create') }}">New student</a>
           </li>
         </ul>
 
@@ -50,7 +50,7 @@
 
   @yield('content')
 
-  <script src={{asset('js/app.js')}}></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 
   @yield('scripts')
 </body>

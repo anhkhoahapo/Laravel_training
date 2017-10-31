@@ -1,7 +1,7 @@
 @extends('student.layouts.main')
 
 @section('styles')
-  <link rel="stylesheet" href={{asset('css/bootstrap-datepicker3.min.css')}}>
+  <link rel="stylesheet" href={{ asset('css/bootstrap-datepicker3.min.css') }}>
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
           </ul>
         </div>
       @endif
-      <form method="post" action={{route('student.index')}} class="form-horizontal">
+      <form method="post" action={{ route('student.index') }} class="form-horizontal">
         <div class="form-group">
           <label for="nameTxt" class="col-sm-2 control-label">Name</label>
           <div class="col-sm-10">
@@ -63,7 +63,7 @@
 @endsection
 
 @section('scripts')
-  <script src={{asset('js/bootstrap-datepicker.min.js')}}></script>
+  <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
   <script>
     $('.datepicker').datepicker({
       format: 'yyyy-mm-dd'

@@ -12,15 +12,15 @@ class StudentsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        $class = ['VN-A','VN-B', 'KT11-01', 'KT22-01', 'KT31-01', 'KT21-01'];
-        for($i = 0 ; $i < 50; $i++) {
+        $class = ['VN-A', 'VN-B', 'KT11-01', 'KT22-01', 'KT31-01', 'KT21-01'];
+        for ($i = 0; $i < 50; $i++) {
             DB::table('students')->insert([
-                    'name'          => $faker->name(),
-                    'birthday'           => $faker->date('Y-m-d', 'now'),
-                    'address'       => $faker->address(),
-                    'class'         => $class[rand(0, count($class) - 1)],
-                    'created_at'    => date('Y-m-d H:i:s'),
-                    'updated_at'    => date('Y-m-d H:i:s')
+                    'name' => $faker->name(),
+                    'birthday' => $faker->date('Y-m-d', 'now'),
+                    'address' => $faker->address(),
+                    'class' => $class[rand(0, count($class) - 1)],
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
             ]);
         }
     }
