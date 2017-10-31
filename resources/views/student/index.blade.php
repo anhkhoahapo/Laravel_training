@@ -9,6 +9,10 @@
     .new-btn {
       margin-top: 30px;
     }
+
+    .pagination {
+      text-align: center;
+    }
   </style>
 @endsection
 
@@ -55,6 +59,9 @@
 
       </tbody>
     </table>
+    <div class="pagination col-md-12">
+      {{ $students->links() }}
+    </div>
   </div>
 
 @endsection
