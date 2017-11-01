@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStudent;
 use App\Model\Student;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('student.student', ['students' => $students]);
+        $students = Student::paginate(10);
+        return view('student.index', ['students' => $students]);
     }
 
     /**
@@ -25,18 +26,22 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create_student');
+        return view('student.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreStudent  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStudent $request)
     {
-        return $request;
+
+        Student::create($request->all());
+
+        return redirect()->route('student.index')
+                ->with('success','Student info created successfully');
     }
 
     /**
