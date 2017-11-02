@@ -51,7 +51,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id);
+        $student = Student::findOrFail($id);
 
         return view('student.show', ['student' => $student]);
     }
@@ -64,7 +64,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::find($id);
+        $student = Student::findOrFail($id);
 
         return view('student.edit', ['student' => $student]);
     }
@@ -78,7 +78,7 @@ class StudentController extends Controller
      */
     public function update(StoreStudent $request, $id)
     {
-        Student::find($id)->update($request->all());
+        Student::findOrFail($id)->update($request->all());
 
         return redirect()->route('student.index')
                 ->with('success','Student info updated successfully');
@@ -92,7 +92,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::find($id)->delete();
+        Student::findOrFail($id)->delete();
 
         return redirect()->route('student.index')
                 ->with('success','Student info deleted successfully');

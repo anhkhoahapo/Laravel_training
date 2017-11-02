@@ -21,14 +21,14 @@
         <div class="form-group">
           <label for="nameTxt" class="col-sm-2 control-label">Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nameTxt" placeholder="Your name" name="name">
+            <input type="text" class="form-control" id="nameTxt" placeholder="Your name" name="name" value="{{ old('name') }}">
           </div>
         </div>
         <div class="form-group">
           <label for="birthdayTxt" class="col-sm-2 control-label">Date of birth</label>
           <div class="col-sm-10">
             <div class="input-group">
-              <input type="text" class="form-control datepicker" id="birthdayTxt" name="birthday">
+              <input type="text" class="form-control datepicker" id="birthdayTxt" name="birthday" value="{{ old('birthday') }}">
               <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th"></span>
               </div>
@@ -39,14 +39,14 @@
         <div class="form-group">
           <label for="addressTxt" class="col-sm-2 control-label">Address</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="addressTxt" placeholder="Your address" name="address">
+            <input type="text" class="form-control" id="addressTxt" placeholder="Your address" name="address" value="{{ old('address') }}">
           </div>
         </div>
 
         <div class="form-group">
           <label for="classTxt" class="col-sm-2 control-label">Class</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="classTxt" placeholder="" name="class">
+            <input type="text" class="form-control" id="classTxt" placeholder="" name="class" value="{{ old('class') }}">
           </div>
         </div>
 

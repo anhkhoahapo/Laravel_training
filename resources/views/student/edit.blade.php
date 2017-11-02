@@ -45,16 +45,14 @@
         <div class="form-group">
           <label for="address-txt" class="col-sm-2 control-label">Address</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="address-txt" placeholder="Your address" name="address"
-                   value="{{ $student->address }}">
+            <input type="text" class="form-control" id="address-txt" placeholder="Your address" name="address" value="{{ $student->address }}">
           </div>
         </div>
 
         <div class="form-group">
           <label for="class-txt" class="col-sm-2 control-label">Class</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="class-txt" placeholder="" name="class"
-                   value="{{ $student->class }}">
+            <input type="text" class="form-control" id="class-txt" placeholder="" name="class" value="{{ $student->class }}">
           </div>
         </div>
 
