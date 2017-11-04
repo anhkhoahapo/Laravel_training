@@ -17,18 +17,24 @@
           </ul>
         </div>
       @endif
-      <form method="post" action="{{ route('student.index') }}" class="form-horizontal">
+
+      <form
+          class="form-horizontal"
+          method="POST"
+          action="{{ route('student.update', ['id' => $student->id]) }}"
+      >
         <div class="form-group">
-          <label for="nameTxt" class="col-sm-2 control-label">Name</label>
+          <label for="name-txt" class="col-sm-2 control-label">Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nameTxt" placeholder="Your name" name="name" value="{{ old('name') }}">
+            <input type="text" class="form-control" id="name-txt" placeholder="Your name" name="name"
+                   value="{{ $student->name }}">
           </div>
         </div>
         <div class="form-group">
-          <label for="birthdayTxt" class="col-sm-2 control-label">Date of birth</label>
+          <label for="dob-txt" class="col-sm-2 control-label">Date of birth</label>
           <div class="col-sm-10">
             <div class="input-group">
-              <input type="text" class="form-control datepicker" id="birthdayTxt" name="birthday" value="{{ old('birthday') }}">
+              <input type="text" class="form-control datepicker" id="dob-txt" name="birthday" value="{{ $student->birthday }}">
               <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th"></span>
               </div>
@@ -37,25 +43,26 @@
         </div>
 
         <div class="form-group">
-          <label for="addressTxt" class="col-sm-2 control-label">Address</label>
+          <label for="address-txt" class="col-sm-2 control-label">Address</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="addressTxt" placeholder="Your address" name="address" value="{{ old('address') }}">
+            <input type="text" class="form-control" id="address-txt" placeholder="Your address" name="address" value="{{ $student->address }}">
           </div>
         </div>
 
         <div class="form-group">
-          <label for="classTxt" class="col-sm-2 control-label">Class</label>
+          <label for="class-txt" class="col-sm-2 control-label">Class</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="classTxt" placeholder="" name="class" value="{{ old('class') }}">
+            <input type="text" class="form-control" id="class-txt" placeholder="" name="class" value="{{ $student->class }}">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Update</button>
           </div>
         </div>
 
+        <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
       </form>
     </div>
@@ -66,7 +73,7 @@
   <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
   <script>
     $('.datepicker').datepicker({
-      format: 'yyyy-mm-dd'
-    });
+      format: 'yyyy-mm-dd',
+    })
   </script>
 @endsection

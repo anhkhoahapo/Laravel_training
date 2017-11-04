@@ -37,7 +37,6 @@ class StudentController extends Controller
      */
     public function store(StoreStudent $request)
     {
-
         Student::create($request->all());
 
         return redirect()->route('student.index')
@@ -52,7 +51,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::findOrFail($id);
+
+        return view('student.show', ['student' => $student]);
     }
 
     /**
@@ -63,19 +64,24 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::findOrFail($id);
+
+        return view('student.edit', ['student' => $student]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param StoreStudent|Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreStudent $request, $id)
     {
-        //
+        Student::findOrFail($id)->update($request->all());
+
+        return redirect()->route('student.index')
+                ->with('success','Student info updated successfully');
     }
 
     /**
@@ -86,6 +92,9 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Student::findOrFail($id)->delete();
+
+        return redirect()->route('student.index')
+                ->with('success','Student info deleted successfully');
     }
 }

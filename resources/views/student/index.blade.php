@@ -5,13 +5,14 @@
     .actions-head {
       text-align: end;
     }
-
     .new-btn {
       margin-top: 30px;
     }
-
     .pagination {
       text-align: center;
+    }
+    .form-inline {
+      display:inline;
     }
   </style>
 @endsection
@@ -47,14 +48,28 @@
       <tbody>
 
       @foreach($students as $student)
-      <tr>
-        <td>{{ $student->id }}</td>
-        <td>{{ $student->name }}</td>
-        <td>{{ $student->birthday }}</td>
-        <td>{{ $student->address }}</td>
-        <td>{{ $student->class }}</td>
-        <td></td>
-      </tr>
+        <tr>
+          <td>{{ $student->id }}</td>
+          <td>{{ $student->name }}</td>
+          <td>{{ $student->birthday }}</td>
+          <td>{{ $student->address }}</td>
+          <td>{{ $student->class }}</td>
+          <td>
+            <a class="btn btn-success" href="{{ route('student.show', ['id' => $student->id]) }}">Show</a>
+            <a class="btn btn-primary" href="{{ route('student.edit', ['id' => $student->id]) }}">Edit</a>
+            <form
+                class="form-inline"
+                method="POST"
+                action="{{ route('student.destroy', ['id' => $student->id]) }}"
+            >
+
+              <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </form>
+          </td>
+        </tr>
       @endforeach
 
       </tbody>
